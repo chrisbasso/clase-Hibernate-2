@@ -27,7 +27,7 @@ public class Empleado {
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Departamento departamento;
 	
-	@ManyToMany(mappedBy = "empleados", cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Proyecto> proyectos = new ArrayList<Proyecto>();
 
 

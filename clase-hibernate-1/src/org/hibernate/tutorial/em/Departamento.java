@@ -9,11 +9,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.NaturalId;
+
 @Entity
 public class Departamento {
 
 	@Id
 	@GeneratedValue
+	private long id;
+	
+	@NaturalId
 	private String codigo;
 	
 	private String nombre;

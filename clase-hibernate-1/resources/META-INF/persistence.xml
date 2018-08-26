@@ -14,9 +14,7 @@
             Persistence unit para JPA
         </description>
 
-      
-        <class>org.hibernate.tutorial.em.Cliente</class>        
-        <class>org.hibernate.tutorial.em.Direccion</class>
+
         
 
         <properties>
@@ -27,11 +25,12 @@
              <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/es" />
             <property name="javax.persistence.jdbc.user" value="root" />
-			<property name="javax.persistence.jdbc.password" value="alumnos" />
+			<property name="javax.persistence.jdbc.password" value="pass" />
 
  			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.hbm2ddl.auto" value="create" />
+            
         </properties>
 
     </persistence-unit>

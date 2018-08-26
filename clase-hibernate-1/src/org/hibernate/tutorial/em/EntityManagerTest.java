@@ -16,8 +16,7 @@ public class EntityManagerTest {
 
 	@BeforeClass
 	public static void setUp() throws Exception {
-		entityManagerFactory = Persistence
-				.createEntityManagerFactory("org.hibernate.tutorial.jpa");
+		entityManagerFactory = Persistence.createEntityManagerFactory("org.hibernate.tutorial.jpa");
 	}
 
 	@AfterClass
@@ -27,15 +26,11 @@ public class EntityManagerTest {
 
 	@Test
 	public void testHibernate() {
-		// Creamos un cliente con su dirección
-		EntityManager entityManager = entityManagerFactory
-				.createEntityManager();
-		entityManager.getTransaction().begin();
-
+		// Creamos 3 empleados
 		Departamento departamento1 = new Departamento("456", "Sistemas");
-
-		Proyecto proyecto1 = new Proyecto("Pepito", null);
-		Proyecto proyecto2 = new Proyecto("Carloncho", null);
+		Cliente cliente1 = new Cliente("24852256", "UNGS");
+		Proyecto proyecto1 = new Proyecto("Pepito", null, null, cliente1);
+		Proyecto proyecto2 = new Proyecto("Carloncho", null, null, cliente1);
 		ArrayList<Proyecto> proyectos1 = new ArrayList<Proyecto>();
 		proyectos1.add(proyecto1);
 		proyectos1.add(proyecto2);
@@ -44,23 +39,15 @@ public class EntityManagerTest {
 		Empleado empleado2 = new Empleado(124, "Jaimito", departamento1, proyectos1);
 		Empleado empleado3 = new Empleado(125, "Charly", departamento1, proyectos1);
 
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		entityManager.getTransaction().begin();
+
 		entityManager.persist(empleado1);
-		//entityManager.persist(empleado2);
-		//entityManager.persist(empleado3);
+		entityManager.persist(empleado2);
+		entityManager.persist(empleado3);
 		entityManager.getTransaction().commit();
 		entityManager.close();
 
-		// y los recuperamos.
-//		entityManager = entityManagerFactory.createEntityManager();
-//		entityManager.getTransaction().begin();
-////		List<Cliente> result = entityManager.createQuery("from Cliente",
-////				Cliente.class).getResultList();
-////		for (Cliente cliente : result) {
-////			System.out.println(cliente.getRazonSocial() + " "
-////					+ cliente.getDir().getDomicilio());
-////		}
-//		entityManager.getTransaction().commit();
-//		entityManager.close();
 	}
 
 }
